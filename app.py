@@ -21,5 +21,10 @@ def listsopp():
     result = comm.dbconn.listsopp()
     return render_template("apitemp.html", result=result)
 
+@app.route('/listsched')
+def listsopp():
+    result = comm.dbconn.listsopp()
+    return render_template("apitemp.html", result=result)
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
