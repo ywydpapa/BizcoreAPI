@@ -21,9 +21,19 @@ def listsopp():
     result = comm.dbconn.listsopp()
     return render_template("apitemp.html", result=result)
 
-@app.route('/listsched')
+@app.route('/detailsopp/<soppno>')
+def detailsopp(soppno):
+    result = comm.dbconn.detailsopp(soppno)
+    return render_template("apitemp.html", result=result)
+
+@app.route('/listcont')
 def listsopp():
-    result = comm.dbconn.listsopp()
+    result = comm.dbconn.listcont()
+    return render_template("apitemp.html", result=result)
+
+@app.route('/detailcont/<contno>')
+def detailcont(contno):
+    result = comm.dbconn.detailcont(contno)
     return render_template("apitemp.html", result=result)
 
 if __name__ == '__main__':

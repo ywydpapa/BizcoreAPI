@@ -25,4 +25,30 @@ def listsopp():
     sql = "select * from swc_sopp where attrib not like %s"
     cur.execute(sql, 'XXX%')
     results = list(cur.fetchall())
+    cur.close()
     return results
+
+def detailsopp(soppno):
+    cur = db.cursor()
+    sql = "select * from swc_sopp where soppNo = %s and attrib not like %s"
+    cur.execute(sql, (soppno,'XXX%'))
+    results = list(cur.fetchall())
+    cur.close()
+    return results
+
+def listcont():
+    cur = db.cursor()
+    sql = "select * from swc_cont where attrib not like %s"
+    cur.execute(sql, 'XXX%')
+    results = list(cur.fetchall())
+    cur.close()
+    return results
+
+def detailcont(contno):
+    cur = db.cursor()
+    sql = "select * from swc_cont where contNo = %s and attrib not like %s"
+    cur.execute(sql, (contno, 'XXX%'))
+    results = list(cur.fetchall())
+    cur.close()
+    return results
+
