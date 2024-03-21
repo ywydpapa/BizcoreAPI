@@ -1,7 +1,9 @@
 from flask import Flask,jsonify,request,render_template,redirect,url_for
 import comm.dbconn
+from flask_restx import Api, Resource
 
 app = Flask(__name__)
+api = Api(app)
 
 @app.route('/')
 def denyaccess():  # put application's code here
