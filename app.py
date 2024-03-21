@@ -27,7 +27,7 @@ def detailsopp(soppno):
     return render_template("apitemp.html", result=result)
 
 @app.route('/listcont')
-def listsopp():
+def listcont():
     result = comm.dbconn.listcont()
     return render_template("apitemp.html", result=result)
 

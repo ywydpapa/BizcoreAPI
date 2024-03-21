@@ -1,12 +1,12 @@
 import pymysql
-import settings
+import comm.settings
 
 db = pymysql.connect(
-        host=settings.host
-        , port=settings.port
-        , user=settings.user
-        , passwd=settings.password
-        , db=settings.database
+        host=comm.settings.host
+        , port=comm.settings.port
+        , user=comm.settings.user
+        , passwd=comm.settings.password
+        , db=comm.settings.database
         , charset='utf8'
         )
 
