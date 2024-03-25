@@ -31,7 +31,7 @@ def listsopp():
             "left join swc_code e on a.soppStatus = e.codeNo "
             "left join swc_code f on a.cntrctMth = f.codeNo "
             "left join swc_cust g on a.buyrNo = g.custNo ")
-    sqlc = "where a.attrib not like %s"
+    sqlc = "where a.attrib not like %s and a.compNo='100002'"
     sqls = "order by a.soppTargetDate desc"
     sql = sqlf + sqlc + sqls
     print(sql)
@@ -57,7 +57,7 @@ def listcont():
             "left join swc_cust c on a.custNo = c.custNo "
             "left join swc_code d on a.contType = d.codeNo "
             "left join swc_code g on a.cntrctMth = g.codeNo ")
-    sqlc = "where a.attrib not like %s"
+    sqlc = "where a.attrib not like %s and a.compNo='100002'"
     sqls = " order by a.regDatetime desc"
     sql = sqlf + sqlc + sqls
     cur.execute(sql, 'XXX%')
