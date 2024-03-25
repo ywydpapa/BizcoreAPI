@@ -24,8 +24,14 @@ def logincheck(compid, userid, userpass):
 
 def listsopp():
     cur = db.cursor()
-    sqlf = "select a.regDatetime,d.desc03, f.desc03,a.soppTitle,a.soppNo, c.custName,g.custName,b.userName,a.soppTargetAmt,e.desc03,a.soppTargetDate from swc_sopp a left join swc_user b on a.userNo = b.userNo left join swc_cust c on a.custNo = c.custNo left join swc_code d on a.soppType = d.codeNo left join swc_code e on a.soppStatus = e.codeNo left join swc_code f on a.cntrctMth = f.codeNo left join swc_cust g on a.buyrNo = g.custNo"
-    sqlc = " where a.attrib not like %s"
+    sqlf = ("select a.regDatetime,d.desc03, f.desc03,a.soppTitle,a.soppNo, c.custName,g.custName,b.userName,a.soppTargetAmt,e.desc03,a.soppTargetDate from swc_sopp a "
+            "left join swc_user b on a.userNo = b.userNo "
+            "left join swc_cust c on a.custNo = c.custNo "
+            "left join swc_code d on a.soppType = d.codeNo "
+            "left join swc_code e on a.soppStatus = e.codeNo "
+            "left join swc_code f on a.cntrctMth = f.codeNo "
+            "left join swc_cust g on a.buyrNo = g.custNo ")
+    sqlc = "where a.attrib not like %s"
     sqls = "order by a.soppTargetDate desc"
     sql = sqlf + sqlc + sqls
     print(sql)
@@ -46,7 +52,14 @@ def detailsopp(soppno):
 
 def listcont():
     cur = db.cursor()
-    sql = "select * from swc_cont where attrib not like %s"
+    sqlf = ("select a.regDatetime,d.desc03 contTypeN, g.desc03 cntrctMthN,a.contTitle,a.contNo ,c.custName,a.contAmt,a.net_profit, b.userName, a.categories,a.paymaintSdate,a.paymaintEdate,a.delivDate  from swc_cont a"
+            " left join swc_user b on a.userNo = b.userNo "
+            "left join swc_cust c on a.custNo = c.custNo "
+            "left join swc_code d on a.contType = d.codeNo "
+            "left join swc_code g on a.cntrctMth = g.codeNo ")
+    sqlc = "where a.attrib not like %s"
+    sqls = " order by a.regDatetime desc"
+    sql = sqlf + sqlc + sqls
     cur.execute(sql, 'XXX%')
     results = list(cur.fetchall())
     cur.close()
