@@ -12,10 +12,9 @@ def denyaccess():  # put application's code here
 
 @app.route('/usercheck')
 def usercheck():
-    compid = request.form.get('commpid')
     username = request.form.get('username')
     password = request.form.get('password')
-    result = comm.dbconn.logincheck(compid, username, password)
+    result = comm.dbconn.logincheck(username, password)
     result = jsonify(result)
     return render_template("apitemp.html", result=result)
 

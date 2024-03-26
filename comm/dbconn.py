@@ -13,10 +13,10 @@ db = pymysql.connect(
 cursor = db.cursor()
 
 
-def logincheck(compid, userid, userpass):
+def logincheck(userid, userpass):
     cur = db.cursor()
     sql = "select userNo,userName,userRole from swc_user u left join swc_company c on u.compNo = c.compNo where u.userId=%s and u.userPasswd=password(%s) and c.compId=%s and u.attrib not like %s"
-    cur.execute(sql, (userid, userpass, compid, 'XXX%'))
+    cur.execute(sql, (userid, userpass, '100002', 'XXX%'))
     results = cur.fetchone()
     cur.close()
     return results
