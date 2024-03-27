@@ -58,6 +58,27 @@ def listsched():
     result = comm.dbconn.listsched()
     return render_template("apitemp.html", result=result)
 
+@app.route('/listnotice')
+def listnotice():
+    result = comm.dbconn.listnotice()
+    return render_template("apitemp.html", result=result)
+
+
+@app.route('/listdashsopp')
+def listdashsopp():
+    result = comm.dbconn.listdashsopp()
+    return render_template("apitemp.html", result=result)
+
+
+@app.route('/listdashsales')
+def listdashsales():
+    result = comm.dbconn.listdashsales()
+    return render_template("apitemp.html", result=result)
+
+@app.route('/listdashcont')
+def listdashcont():
+    result = comm.dbconn.listdashcont()
+    return render_template("apitemp.html", result=result)
 
 
 if __name__ == '__main__':
